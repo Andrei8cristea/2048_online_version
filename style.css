@@ -1,0 +1,156 @@
+/* style.css */
+
+/* 1. Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  background: #faf8ef;
+  color: #776e65;
+}
+
+/* 2. Layout General */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  max-width: 400px;
+  margin: auto;
+}
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+header h1 {
+  font-size: 2.5rem;
+  color: #776e65;
+}
+#score {
+  background: #bbada0;
+  color: #f9f6f2;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* 3. Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  background: #bbada0;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+}
+
+/* 4. Cells */
+.cell {
+  background: #cdc1b4;
+  aspect-ratio: 1 / 1; /* ensure square cells */
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #776e65;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.cell:not(:empty) {
+  color: #776e65;
+
+}
+.cell.tile-2    { background: #eee4da; }
+.cell.tile-4    { background: #ede0c8; }
+.cell.tile-8    { background: #f2b179; }
+.cell.tile-16   { background: #f59563; }
+.cell.tile-32   { background: #f67c5f; }
+.cell.tile-64   { background: #f65e3b; }
+.cell.tile-128  { background: #edcf72; font-size: 1.8rem; }
+.cell.tile-256  { background: #edcc61; font-size: 1.6rem; }
+.cell.tile-512  { background: #edc850; font-size: 1.4rem; }
+.cell.tile-1024 { background: #edc53f; font-size: 1.2rem; }
+.cell.tile-2048 { background: #edc22e; font-size: 1rem; }
+
+/* 5. Hover & Animations */
+.cell:not(:empty):hover {
+  transform: scale(1.05);
+}
+
+/* 6. Overlay Game Over */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(238,228,218,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.overlay.hidden {
+  display: none;
+}
+.overlay .message {
+  background: #f9f6f2;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.overlay .message p {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.overlay .message input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+.overlay .message button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background: #8f7a66;
+  color: #f9f6f2;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+.overlay .message button:hover {
+  background: #9f8b76;
+}
+
+/* 7. Leaderboard */
+aside {
+  margin-top: 1.5rem;
+  width: 100%;
+  text-align: left;
+}
+aside h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+aside ol {
+  list-style: decimal inside;
+}
+aside li {
+  padding: 0.25rem 0;
+  font-size: 1rem;
+}
